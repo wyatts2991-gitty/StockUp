@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)https://storage.googleapis.com/vanderbot-student-files/stephen/published/stockup-github-deploy.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StockUp — Concierge Costco Delivery</title>
+<meta name="description" content="Concierge Costco delivery exclusively for your building. Flat $8 fee. No tipping. No apps. Just your groceries at your door.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0a0f1e;
+  --navy-light:#111827;
+  --navy-card:#1a2236;
+  --green:#22c55e;
+  --green-dark:#16a34a;
+  --green-glow:rgba(34,197,94,0.15);
+  --text:#f1f5f9;
+  --text-muted:#94a3b8;
+  --border:rgba(255,255,255,0.08);
+  --radius:12px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;min-height:100vh;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{font-size:1.25rem;font-weight:700;color:var(--green);letter-spacing:-0.5px;}
+.nav-cta{background:var(--green);color:#000;font-weight:600;font-size:0.875rem;padding:0.5rem 1.25rem;border-radius:8px;text-decoration:none;transition:background 0.2s;}
+.nav-cta:hover{background:var(--green-dark);color:#fff;}
+
+/* HERO */
+.hero{text-align:center;padding:5rem 2rem 4rem;max-width:720px;margin:0 auto;}
+.hero-badge{display:inline-block;background:var(--green-glow);border:1px solid var(--green);color:var(--green);font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:99px;margin-bottom:1.5rem;}
+.hero h1{font-size:clamp(2rem,5vw,3.25rem);font-weight:800;line-height:1.15;letter-spacing:-1px;margin-bottom:1.25rem;}
+.hero h1 span{color:var(--green);}
+.hero p{font-size:1.15rem;color:var(--text-muted);max-width:520px;margin:0 auto 2rem;}
+.hero-cta{display:inline-block;background:var(--green);color:#000;font-weight:700;font-size:1rem;padding:0.875rem 2rem;border-radius:10px;text-decoration:none;transition:background 0.2s,transform 0.15s;}
+.hero-cta:hover{background:var(--green-dark);color:#fff;transform:translateY(-2px);}
+
+/* PILLS */
+.pills{display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;padding:0 2rem 3.5rem;max-width:720px;margin:0 auto;}
+.pill{background:var(--navy-card);border:1px solid var(--border);border-radius:99px;padding:0.5rem 1.1rem;font-size:0.875rem;color:var(--text-muted);display:flex;align-items:center;gap:0.4rem;}
+.pill .dot{width:8px;height:8px;border-radius:50%;background:var(--green);}
+
+/* SECTION */
+section{padding:4rem 2rem;max-width:860px;margin:0 auto;}
+section h2{font-size:1.75rem;font-weight:700;margin-bottom:0.5rem;letter-spacing:-0.5px;}
+section .sub{color:var(--text-muted);font-size:0.95rem;margin-bottom:2.5rem;}
+
+/* HOW IT WORKS */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;}
+.step-card{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;}
+.step-num{width:36px;height:36px;border-radius:50%;background:var(--green-glow);border:1px solid var(--green);color:var(--green);font-weight:700;font-size:0.9rem;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;}
+.step-card h3{font-size:1rem;font-weight:600;margin-bottom:0.4rem;}
+.step-card p{font-size:0.875rem;color:var(--text-muted);}
+
+/* DELIVERY BANNER */
+.delivery-banner{background:var(--green-glow);border:1px solid var(--green);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:2.5rem;display:flex;align-items:center;gap:0.75rem;font-size:0.95rem;}
+.delivery-banner .icon{font-size:1.25rem;}
+.delivery-banner strong{color:var(--green);}
+
+/* FORM */
+.form-card{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+@media(max-width:580px){.form-grid{grid-template-columns:1fr;}}
+.form-group{display:flex;flex-direction:column;gap:0.4rem;}
+.form-group.full{grid-column:1/-1;}
+label{font-size:0.8rem;font-weight:600;color:var(--text-muted);letter-spacing:0.04em;text-transform:uppercase;}
+.req{color:var(--green);}
+input,select,textarea{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:0.7rem 0.9rem;color:var(--text);font-size:0.95rem;font-family:inherit;transition:border-color 0.2s;width:100%;}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green);background:rgba(34,197,94,0.04);}
+input.error,select.error,textarea.error{border-color:#ef4444;}
+.error-msg{color:#ef4444;font-size:0.78rem;display:none;}
+.error-msg.show{display:block;}
+textarea{resize:vertical;min-height:70px;}
+select option{background:var(--navy-light);}
+
+/* ITEM LIST BUILDER */
+.item-list-label{font-size:0.8rem;font-weight:600;color:var(--text-muted);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.5rem;display:flex;align-items:center;justify-content:space-between;}
+.item-list-label .req{color:var(--green);}
+.item-list-container{border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.item-list-container.error-border{border-color:#ef4444;}
+
+/* Column headers */
+.item-list-header{display:grid;grid-template-columns:70px 1fr 160px 36px;gap:0;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border);padding:0.5rem 0.75rem;font-size:0.72rem;font-weight:600;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;}
+.item-list-header span:last-child{visibility:hidden;}
+
+/* Each row */
+#item-rows{display:flex;flex-direction:column;}
+.item-row{display:grid;grid-template-columns:70px 1fr 160px 36px;gap:0;align-items:center;border-bottom:1px solid var(--border);transition:background 0.15s;}
+.item-row:last-child{border-bottom:none;}
+.item-row:hover{background:rgba(255,255,255,0.02);}
+.item-row input{border:none;border-radius:0;background:transparent;padding:0.65rem 0.75rem;font-size:0.9rem;color:var(--text);}
+.item-row input:focus{background:rgba(34,197,94,0.04);border:none;outline:none;}
+.item-row input.qty-input{text-align:center;border-right:1px solid var(--border);}
+.item-row input.item-name{border-right:1px solid var(--border);}
+.item-row input.item-notes{border-right:1px solid var(--border);font-size:0.85rem;color:var(--text-muted);}
+.item-row input::placeholder{color:rgba(148,163,184,0.4);}
+.btn-remove-row{width:36px;height:100%;display:flex;align-items:center;justify-content:center;background:transparent;border:none;cursor:pointer;color:var(--text-muted);font-size:1rem;transition:color 0.15s;padding:0.65rem 0;}
+.btn-remove-row:hover{color:#ef4444;}
+
+/* Add item button */
+.btn-add-item{width:100%;background:transparent;border:none;border-top:1px solid var(--border);color:var(--green);font-size:0.875rem;font-weight:600;padding:0.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.4rem;transition:background 0.15s;font-family:inherit;}
+.btn-add-item:hover{background:var(--green-glow);}
+
+@media(max-width:540px){
+  .item-list-header,.item-row{grid-template-columns:55px 1fr 36px;}
+  .item-list-header span.notes-col,.item-row input.item-notes{display:none;}
+  .item-row input.item-name{border-right:1px solid var(--border);}
+}
+
+/* CHECKBOXES */
+.check-group{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.5rem;}
+.check-label{display:flex;align-items:flex-start;gap:0.65rem;font-size:0.875rem;color:var(--text-muted);cursor:pointer;}
+.check-label input[type="checkbox"]{width:16px;height:16px;min-width:16px;margin-top:2px;accent-color:var(--green);cursor:pointer;}
+
+/* SUBMIT */
+.btn-submit{width:100%;background:var(--green);color:#000;font-weight:700;font-size:1rem;padding:0.9rem;border:none;border-radius:10px;cursor:pointer;transition:background 0.2s,transform 0.15s;}
+.btn-submit:hover{background:var(--green-dark);color:#fff;transform:translateY(-1px);}
+.btn-submit:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+
+/* SUCCESS */
+.success-state{display:none;text-align:center;padding:3rem 2rem;}
+.success-state.show{display:block;}
+.success-icon{font-size:3rem;margin-bottom:1rem;}
+.success-state h3{font-size:1.5rem;font-weight:700;margin-bottom:0.75rem;}
+.success-state p{color:var(--text-muted);font-size:0.95rem;max-width:420px;margin:0 auto 0.5rem;}
+
+/* FAQ */
+.faq-grid{display:flex;flex-direction:column;gap:1rem;}
+.faq-item{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.faq-q{width:100%;background:none;border:none;color:var(--text);font-size:0.95rem;font-weight:600;text-align:left;padding:1.1rem 1.25rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit;}
+.faq-q .arrow{transition:transform 0.25s;color:var(--green);}
+.faq-q[aria-expanded="true"] .arrow{transform:rotate(180deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;font-size:0.875rem;color:var(--text-muted);padding:0 1.25rem;}
+.faq-a.open{max-height:200px;padding-bottom:1.1rem;}
+
+/* FOOTER */
+footer{text-align:center;padding:2.5rem 2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.85rem;}
+footer a{color:var(--green);text-decoration:none;}
+
+/* DIVIDER */
+.divider{border:none;border-top:1px solid var(--border);margin:0;}
+</style>
+<link href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/inject.css" rel="stylesheet" type="text/css" data-apio="true"><link data-apio="true" rel="stylesheet" type="text/css" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_chrome-extension_inject_global_module_scss.css"><link data-apio="true" rel="stylesheet" type="text/css" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_chrome-extension_inject_core_components_OpenPopupButton_tsx.css"></head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">StockUp 🛒</span>
+  <a href="https://storage.googleapis.com/vanderbot-student-files/stephen/published/stockup-github-deploy.html#order" class="nav-cta">Place Order →</a>
+</nav>
+
+<!-- HERO -->
+<div class="zp-open-popup-button"><div class="zp apolloio-css-vars-reset x_lAIzV x_ktWFc" dir="ltr"><div class="x_R61yl zp-15-0-0-zp-fixed"><img alt="Apollo.io" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSIjZWJmMjEyIiBkPSJtMjEuNDY2IDUuMDcxLjAwNCAxMC45MTVjLjAwMSAxLjcyNS0xLjgzNCAyLjgzLTMuMzU4IDIuMDI0TDcuMTcgMTIuMjIzYTE1LjEgMTUuMSAwIDAgMSAzLjEtMy42NGw4LjU4MiA3LjkzMmMuNDU1LjQyIDEuMTcyLS4wMzYuOTg1LS42MjZMMTYuNTA5IDUuNDFhMTUgMTUgMCAwIDEgNC45NTYtLjMzOE0xOC40OTYgMzQuOTI1bC0uMDA1LTEwLjg2YzAtMS43MjQgMS44MzQtMi44MyAzLjM1OS0yLjAyM2wxMC45NDYgNS43OWExNSAxNSAwIDAgMS0zLjExNiAzLjYyNmwtOC41Ny03LjkyMWMtLjQ1NS0uNDItMS4xNzIuMDM1LS45ODUuNjI1bDMuMzE2IDEwLjQ0MWExNSAxNSAwIDAgMS00Ljk0NS4zMjJNMjMuNDkyIDE4Ljg5OCAzMS40NCAxMC4zYTE1IDE1IDAgMCAwLTMuNjQtMy4xMTNsLTUuODA0IDEwLjk3MmMtLjgwNiAxLjUyNC4zIDMuMzU5IDIuMDI0IDMuMzU4bDEwLjkwNS0uMDA1YTE1LjIgMTUuMiAwIDAgMC0uMzI0LTQuOTU4bC0xMC40ODQgMy4zM2MtLjU5LjE4Ny0xLjA0NS0uNTMtLjYyNS0uOTg1TTUuMDcgMTguNTRsMTAuODcyLS4wMDRjMS43MjUgMCAyLjgzIDEuODM0IDIuMDI0IDMuMzU4TDEyLjE5MiAzMi44MWExNSAxNSAwIDAgMS0zLjYyNy0zLjEwM2w3LjkwNi04LjU1M2MuNDItLjQ1NS0uMDM2LTEuMTcyLS42MjYtLjk4NUw1LjQwOCAyMy40ODRhMTUgMTUgMCAwIDEtLjMzNy00Ljk0MyIvPjwvc3ZnPg==" class="x_kJtSQ"></div></div></div><div class="hero">
+  <div class="hero-badge">🏠 Your Building Only · Exclusive Service</div>
+  <h1>Your Costco.<br><span>Delivered.</span></h1>
+  <p>Concierge Costco delivery exclusively for your building. Flat $8 fee. No tipping. No apps. Just your groceries at your door.</p>
+  <a href="https://storage.googleapis.com/vanderbot-student-files/stephen/published/stockup-github-deploy.html#order" class="hero-cta">Place Your Order →</a>
+</div>
+
+<!-- PILLS -->
+<div class="pills">
+  <div class="pill"><span class="dot"></span> Flat $8 Delivery Fee</div>
+  <div class="pill"><span class="dot"></span> No Tipping</div>
+  <div class="pill"><span class="dot"></span> Sundays &amp; Thursdays</div>
+  <div class="pill"><span class="dot"></span> Delivered To Your Door</div>
+</div>
+
+<hr class="divider">
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <h2>Simple Process</h2>
+  <p class="sub">Done in three steps. No app downloads. No subscriptions.</p>
+  <div class="steps">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h3>Browse Costco.com</h3>
+      <p>Browse Costco.com or the Costco app to find the items you want. Note the item name and quantity for each product.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h3>Submit Your List</h3>
+      <p>Fill out the order form below with your item list and preferred delivery day. Submit at least 48 hours before delivery.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h3>We Deliver To Your Door</h3>
+      <p>We shop Costco on your behalf and deliver directly to your unit. Payment is cash or Venmo at delivery.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ORDER FORM -->
+<section id="order">
+  <h2>Place Your Order</h2>
+  <p class="sub">Fill out the form below. Orders must be submitted at least 48 hours before your preferred delivery day.</p>
+
+  <div class="delivery-banner">
+    <span class="icon">📅</span>
+    <div>
+      <strong id="next-window">Next delivery: Thursday, Jun 11</strong> — Order by <strong id="order-by">Tuesday, Jun 9 by midnight</strong>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div id="form-wrap">
+      <form id="order-form" novalidate="">
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="name">Full Name <span class="req">*</span></label>
+            <input type="text" id="name" placeholder="Jane Smith" autocomplete="name">
+            <span class="error-msg" id="name-err">Please enter your name.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="unit">Unit Number <span class="req">*</span></label>
+            <input type="text" id="unit" placeholder="e.g. 4B">
+            <span class="error-msg" id="unit-err">Please enter your unit number.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number <span class="req">*</span></label>
+            <input type="tel" id="phone" placeholder="(555) 555-5555" autocomplete="tel">
+            <span class="error-msg" id="phone-err">Please enter your phone number.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input type="email" id="email" placeholder="jane@example.com" autocomplete="email">
+            <span class="error-msg" id="email-err">Please enter a valid email.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="day">Preferred Delivery Day <span class="req">*</span></label>
+            <select id="day">
+              <option value="">Select a day...</option>
+              <option value="sunday">Sunday</option>
+              <option value="thursday">Thursday</option>
+            </select>
+            <span class="error-msg" id="day-err">Please select a delivery day.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="total">Estimated Costco Total ($) <span class="req">*</span></label>
+            <input type="number" id="total" placeholder="e.g. 120" min="1">
+            <span class="error-msg" id="total-err">Please enter your estimated order total.</span>
+          </div>
+
+          <!-- ITEM LIST BUILDER -->
+          <div class="form-group full">
+            <div class="item-list-label">
+              <span>Costco Item List <span class="req">*</span></span>
+              <span style="font-size:0.75rem;color:var(--text-muted);text-transform:none;letter-spacing:0;font-weight:400;">Add at least 1 item</span>
+            </div>
+            <div class="item-list-container" id="item-list-container">
+              <div class="item-list-header">
+                <span>Qty</span>
+                <span>Item Name</span>
+                <span class="notes-col">Notes (optional)</span>
+                <span></span>
+              </div>
+              <div id="item-rows"><div class="item-row" data-id="1">
+    <input type="text" class="qty-input" placeholder="1" value="1" maxlength="4" aria-label="Quantity">
+    <input type="text" class="item-name" placeholder="e.g. Kirkland Olive Oil" value="" aria-label="Item name">
+    <input type="text" class="item-notes notes-col" placeholder="Any notes..." value="" aria-label="Notes">
+    <button type="button" class="btn-remove-row" aria-label="Remove item" title="Remove" style="opacity: 1;">✕</button>
+  </div><div class="item-row" data-id="2">
+    <input type="text" class="qty-input" placeholder="1" value="1" maxlength="4" aria-label="Quantity">
+    <input type="text" class="item-name" placeholder="e.g. Kirkland Olive Oil" value="" aria-label="Item name">
+    <input type="text" class="item-notes notes-col" placeholder="Any notes..." value="" aria-label="Notes">
+    <button type="button" class="btn-remove-row" aria-label="Remove item" title="Remove" style="opacity: 1;">✕</button>
+  </div></div>
+              <button type="button" class="btn-add-item" id="add-item-btn">
+                <span>＋</span> Add Item
+              </button>
+            </div>
+            <span class="error-msg" id="items-err">Please add at least one item.</span>
+          </div>
+
+          <div class="form-group full">
+            <label for="notes">Special Instructions (optional)</label>
+            <textarea id="notes" placeholder="Allergies, substitution preferences, delivery notes..."></textarea>
+          </div>
+
+        </div>
+
+        <div class="check-group" style="margin-top:1.5rem;">
+          <label class="check-label">
+            <input type="checkbox" id="terms1">
+            I understand the flat $8 delivery fee will be collected at delivery (cash or Venmo).
+          </label>
+          <label class="check-label">
+            <input type="checkbox" id="terms2">
+            I understand orders must be submitted at least 48 hours before my preferred delivery day.
+          </label>
+          <span class="error-msg" id="terms-err">Please agree to both terms above.</span>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submit-btn">Submit Order →</button>
+      </form>
+    </div>
+
+    <div class="success-state" id="success">
+      <div class="success-icon">🎉</div>
+      <h3>Order Received!</h3>
+      <p>Thanks, <strong id="s-name"></strong>! Your order for <strong id="s-day"></strong> delivery has been submitted.</p>
+      <p>We'll text you at <strong id="s-phone"></strong> to confirm your order and again when we're on our way.</p>
+      <p style="margin-top:1rem;">Payment of <strong>$8 delivery fee</strong> is due at delivery — cash or Venmo.</p>
+      <p style="margin-top:0.5rem;">Questions? Text or call directly.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<section id="faq">
+  <h2>Common Questions</h2>
+  <p class="sub">Everything you need to know before placing your first order.</p>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">🏪 What stores do you shop at? <span class="arrow">▼</span></button>
+      <div class="faq-a">Costco only. We specialize exclusively in Costco to keep things simple, consistent, and affordable for everyone.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">💵 How much does delivery cost? <span class="arrow">▼</span></button>
+      <div class="faq-a">A flat $8 per order. No tips, no surge pricing, no service fees. Just $8, always.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">📅 When do you deliver? <span class="arrow">▼</span></button>
+      <div class="faq-a">Sundays and Thursdays. Orders must be submitted at least 48 hours before your preferred delivery day.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">💳 How do I pay? <span class="arrow">▼</span></button>
+      <div class="faq-a">Cash or Venmo at delivery. You pay the Costco item cost plus the $8 delivery fee when we drop off your order.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">🔄 What if an item is out of stock? <span class="arrow">▼</span></button>
+      <div class="faq-a">We'll text you before checkout to offer a substitution. If you don't want a sub, we'll skip that item and adjust your total.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">🕐 When do I need to order by? <span class="arrow">▼</span></button>
+      <div class="faq-a">Friday midnight for Sunday delivery. Tuesday midnight for Thursday delivery. Late orders will roll to the next window.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">🏠 Do you deliver to my door? <span class="arrow">▼</span></button>
+      <div class="faq-a">Yes — we deliver directly to your unit. You don't need to come to a lobby or pickup point.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">🔁 Can I set up recurring orders? <span class="arrow">▼</span></button>
+      <div class="faq-a">Not yet — for now, submit a new order form each time. Recurring delivery subscriptions are coming soon!</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>StockUp · Exclusive to your building · Questions? Text or call directly.</p>
+</footer>
+
+<script>
+// ─── DELIVERY WINDOW BANNER ───────────────────────────────────────────────
+(function() {
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const now = new Date();
+  const dow = now.getDay(); // 0=Sun,4=Thu
+
+  function nextOccurrence(targetDow) {
+    const d = new Date(now);
+    let diff = targetDow - dow;
+    if (diff <= 0) diff += 7;
+    d.setDate(d.getDate() + diff);
+    return d;
+  }
+
+  const nextSun = nextOccurrence(0);
+  const nextThu = nextOccurrence(4);
+  const next = nextSun < nextThu ? nextSun : nextThu;
+  const dayName = next.getDay() === 0 ? 'Sunday' : 'Thursday';
+
+  const cutoff = new Date(next);
+  cutoff.setDate(cutoff.getDate() - 2);
+  const cutoffDay = days[cutoff.getDay()];
+
+  document.getElementById('next-window').textContent =
+    `Next delivery: ${dayName}, ${months[next.getMonth()]} ${next.getDate()}`;
+  document.getElementById('order-by').textContent =
+    `${cutoffDay}, ${months[cutoff.getMonth()]} ${cutoff.getDate()} by midnight`;
+})();
+
+// ─── ITEM LIST BUILDER ───────────────────────────────────────────────────
+let rowCount = 0;
+
+function addRow(qty='', name='', notes='') {
+  rowCount++;
+  const id = rowCount;
+  const container = document.getElementById('item-rows');
+  const row = document.createElement('div');
+  row.className = 'item-row';
+  row.dataset.id = id;
+  row.innerHTML = `
+    <input type="text" class="qty-input" placeholder="1" value="${qty}" maxlength="4" aria-label="Quantity">
+    <input type="text" class="item-name" placeholder="e.g. Kirkland Olive Oil" value="${name}" aria-label="Item name">
+    <input type="text" class="item-notes notes-col" placeholder="Any notes..." value="${notes}" aria-label="Notes">
+    <button type="button" class="btn-remove-row" aria-label="Remove item" title="Remove">✕</button>
+  `;
+  row.querySelector('.btn-remove-row').addEventListener('click', () => {
+    row.remove();
+    updateRemoveButtons();
+  });
+  container.appendChild(row);
+  updateRemoveButtons();
+  // Focus the name field of the new row
+  row.querySelector('.item-name').focus();
+}
+
+function updateRemoveButtons() {
+  const rows = document.querySelectorAll('.item-row');
+  rows.forEach(r => {
+    r.querySelector('.btn-remove-row').style.opacity = rows.length === 1 ? '0.3' : '1';
+    r.querySelector('.btn-remove-row').disabled = rows.length === 1;
+  });
+}
+
+function getItemsAsText() {
+  const rows = document.querySelectorAll('.item-row');
+  const lines = [];
+  rows.forEach(row => {
+    const qty = row.querySelector('.qty-input').value.trim() || '1';
+    const name = row.querySelector('.item-name').value.trim();
+    const notes = row.querySelector('.item-notes') ? row.querySelector('.item-notes').value.trim() : '';
+    if (name) {
+      lines.push(notes ? `${qty}x ${name} (${notes})` : `${qty}x ${name}`);
+    }
+  });
+  return lines.join('\n');
+}
+
+function hasAtLeastOneItem() {
+  const rows = document.querySelectorAll('.item-row');
+  for (const row of rows) {
+    if (row.querySelector('.item-name').value.trim()) return true;
+  }
+  return false;
+}
+
+// Init with 2 starter rows
+addRow('1','','');
+addRow('1','','');
+
+document.getElementById('add-item-btn').addEventListener('click', () => {
+  addRow();
+  // Clear error state when user adds a row
+  document.getElementById('item-list-container').classList.remove('error-border');
+  document.getElementById('items-err').classList.remove('show');
+});
+
+// ─── FORM VALIDATION + SUBMIT ────────────────────────────────────────────
+function setError(id, errId, condition) {
+  const el = document.getElementById(id);
+  const err = document.getElementById(errId);
+  if (condition) {
+    el.classList.add('error');
+    err.classList.add('show');
+    return false;
+  } else {
+    el.classList.remove('error');
+    err.classList.remove('show');
+    return true;
+  }
+}
+
+document.getElementById('order-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const unit = document.getElementById('unit').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const day = document.getElementById('day').value;
+  const total = document.getElementById('total').value.trim();
+  const terms1 = document.getElementById('terms1').checked;
+  const terms2 = document.getElementById('terms2').checked;
+
+  let valid = true;
+  if (!setError('name', 'name-err', !name)) valid = false;
+  if (!setError('unit', 'unit-err', !unit)) valid = false;
+  if (!setError('phone', 'phone-err', !phone)) valid = false;
+  if (!setError('email', 'email-err', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) valid = false;
+  if (!setError('day', 'day-err', !day)) valid = false;
+  if (!setError('total', 'total-err', !total)) valid = false;
+
+  // Validate item list
+  const itemsOk = hasAtLeastOneItem();
+  const itemsContainer = document.getElementById('item-list-container');
+  const itemsErr = document.getElementById('items-err');
+  if (!itemsOk) {
+    itemsContainer.classList.add('error-border');
+    itemsErr.classList.add('show');
+    valid = false;
+  } else {
+    itemsContainer.classList.remove('error-border');
+    itemsErr.classList.remove('show');
+  }
+
+  // Validate terms
+  const termsErr = document.getElementById('terms-err');
+  if (!terms1 || !terms2) {
+    termsErr.classList.add('show');
+    valid = false;
+  } else {
+    termsErr.classList.remove('show');
+  }
+
+  if (!valid) return;
+
+  // Show success
+  document.getElementById('s-name').textContent = name;
+  document.getElementById('s-day').textContent = day.charAt(0).toUpperCase() + day.slice(1);
+  document.getElementById('s-phone').textContent = phone;
+
+  document.getElementById('form-wrap').style.display = 'none';
+  const successEl = document.getElementById('success');
+  successEl.style.display = 'block';
+  successEl.classList.add('show');
+  successEl.scrollIntoView({behavior:'smooth',block:'center'});
+});
+
+// Clear errors on input
+['name','unit','phone','email','day','total'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => {
+    document.getElementById(id).classList.remove('error');
+    const errEl = document.getElementById(id + '-err');
+    if (errEl) errEl.classList.remove('show');
+  });
+});
+
+// ─── FAQ ACCORDION ────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-q').forEach(b => {
+      b.setAttribute('aria-expanded','false');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if (!expanded) {
+      btn.setAttribute('aria-expanded','true');
+      btn.nextElementSibling.classList.add('open');
+    }
+  });
+});
+</script>
+
+
+<div style="position: relative;" id="zp-15-0-0-licdn-root-apollo_everywhere"><template shadowrootmode="open"><div class="zp apolloio-css-vars-reset x_lAIzV x_ktWFc" dir="ltr" data-has-tooltip-listener=""><div class="x_BJJxg" data-disable-focus-trap="true" data-testid="toast-container-bottom"></div><div class="x_KfhZL" aria-live="polite" aria-atomic="true" data-disable-focus-trap="true" data-testid="toast-container-top"></div><span data-name="tooltip-listener" aria-hidden="true" style="display: none;"></span></div> </template></div></body></html>
